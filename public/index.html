@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Suki Value Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <h1>Suki Value Intelligence</h1>
+        <div class="tag">Clinical → Operational → Financial narratives at enterprise scale (liquid glass UI, real OpenAI calls)</div>
+      </div>
+      <div class="pillrow">
+        <div class="pill"><strong>Mode</strong> Demo-safe (no PHI)</div>
+        <div class="pill"><strong>Outputs</strong> 4 audiences + validation checklist</div>
+        <div class="pill"><strong>Scale</strong> Enterprise health systems</div>
+      </div>
+    </div>
+
+    <div class="card hero">
+      <div class="inner">
+        <div>
+          <h2>What this solves (Katie + Erin):</h2>
+          <p>
+            Take the same clinical impact metrics and instantly generate <b>four stakeholder narratives</b>
+            (Clinical, Ops, Financial, Executive) — plus a <b>clinical validation checklist</b> so Medical Directors can trust and defend the story.
+            Includes a <b>Telemetry Upload mock</b> + <b>Epic column mapper</b> to show how this scales for large health systems.
+          </p>
+        </div>
+        <div class="pillrow">
+          <div class="pill"><strong>Telemetry</strong> upload + mapping</div>
+          <div class="pill"><strong>Clinical Validation Mode</strong> conservative</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Left: Inputs -->
+      <div class="card section">
+        <h3>Inputs</h3>
+        <div class="sub">Enter the customer impact metrics. Upload telemetry (optional) to simulate evidence-based narratives for enterprise accounts.</div>
+
+        <div class="form">
+          <div class="field">
+            <label>Customer / Health System *</label>
+            <input id="customerName" placeholder="e.g., Regional Medical Center" />
+          </div>
+
+          <div class="field">
+            <label>Primary Specialty *</label>
+            <select id="specialty">
+              <option value="">Select…</option>
+              <option value="multi-specialty">Multi-specialty</option>
+              <option value="primary-care">Primary care</option>
+              <option value="emergency-medicine">Emergency medicine</option>
+              <option value="cardiology">Cardiology</option>
+              <option value="oncology">Oncology</option>
+              <option value="surgery">Surgery</option>
+              <option value="hospitalist">Hospital medicine</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Physicians live on Suki *</label>
+            <input id="physicianCount" type="number" min="1" placeholder="e.g., 850" />
+          </div>
+
+          <div class="field">
+            <label>Time saved per physician per day (hours) *</label>
+            <input id="timeSaved" type="number" min="0" max="8" step="0.1" placeholder="e.g., 1.8" />
+          </div>
+
+          <div class="field">
+            <label>Additional patient capacity per physician per day *</label>
+            <input id="patientIncrease" type="number" min="0" max="30" step="1" placeholder="e.g., 3" />
+          </div>
+
+          <div class="field">
+            <label>Adoption rate (%) *</label>
+            <input id="adoptionRate" type="number" min="50" max="100" step="1" placeholder="e.g., 94" />
+          </div>
+
+          <div class="field">
+            <label>NPS (physician) *</label>
+            <input id="npsScore" type="number" min="-100" max="100" step="1" placeholder="e.g., 72" />
+          </div>
+
+          <div class="field">
+            <label>Burnout improvement *</label>
+            <select id="burnoutImprovement">
+              <option value="">Select…</option>
+              <option value="mild">Mild (5–15% improvement)</option>
+              <option value="moderate">Moderate (15–30% improvement)</option>
+              <option value="significant">Significant (30%+ improvement)</option>
+            </select>
+          </div>
+
+          <div class="field" style="grid-column: 1 / -1;">
+            <label>Clinical context (optional)</label>
+            <textarea id="clinicalContext" placeholder="e.g., Teaching hospital, resident involvement, high acuity mix, recent Epic upgrade…"></textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="toggle">
+            <input id="clinicalValidationMode" type="checkbox" checked />
+            <div class="tmeta">
+              <span>Clinical Validation Mode</span>
+              <small>Uses conservative wording + produces a validation checklist clinicians can sign off on.</small>
+            </div>
+          </div>
+
+          <div class="toggle">
+            <input id="showAssumptions" type="checkbox" checked />
+            <div class="tmeta">
+              <span>Show Financial Assumptions</span>
+              <small>Includes illustrative $/hr, $/visit, and $/physician/mo inputs.</small>
+            </div>
+          </div>
+        </div>
+
+        <div id="assumptionsBox" style="margin-top:10px;">
+          <div class="kpis">
+            <div class="kpi">
+              <small>Physician hourly rate (loaded)</small>
+              <b>$</b> <input id="assumpRate" type="number" min="80" max="600" step="10" value="200" style="width:110px; margin-left:8px;">
+            </div>
+            <div class="kpi">
+              <small>Reimbursement per visit</small>
+              <b>$</b> <input id="assumpVisit" type="number" min="40" max="1000" step="10" value="150" style="width:110px; margin-left:8px;">
+            </div>
+            <div class="kpi">
+              <small>Suki cost / physician / month</small>
+              <b>$</b> <input id="assumpCost" type="number" min="50" max="2000" step="25" value="300" style="width:110px; margin-left:8px;">
+            </div>
+            <div class="kpi">
+              <small>Work days per year</small>
+              <b></b> <input id="assumpDays" type="number" min="180" max="365" step="5" value="250" style="width:110px;">
+            </div>
+          </div>
+          <div class="mini">All financial outputs are labeled <b>illustrative unless validated by telemetry</b>.</div>
+        </div>
+
+        <div class="hr"></div>
+
+        <h3>Telemetry Upload (Mock) + Epic Column Mapper</h3>
+        <div class="sub">
+          Upload a CSV or JSON sample to simulate enterprise telemetry. No data is stored — it stays in your browser, and only a
+          <b>small, redacted summary</b> is sent to the server for narrative generation.
+        </div>
+
+        <div class="row">
+          <div class="toggle" style="flex:1;">
+            <input id="telemetryEnabled" type="checkbox" checked />
+            <div class="tmeta">
+              <span>Enable telemetry summary</span>
+              <small>Generate evidence-oriented narratives and validation prompts.</small>
+            </div>
+          </div>
+
+          <button class="xbtn" id="openMapperBtn" type="button">Open Epic Column Mapper</button>
+        </div>
+
+        <div class="row" style="margin-top:10px;">
+          <div class="field" style="flex:1;">
+            <label>Upload telemetry file</label>
+            <input id="telemetryFile" type="file" accept=".csv,.json" />
+          </div>
+        </div>
+
+        <div class="mini" id="telemetryStatus">No file loaded yet.</div>
+
+        <div class="hr"></div>
+
+        <h3>Audiences (choose what to generate)</h3>
+        <div class="audiences">
+          <div class="aopt active" data-audience="clinical">
+            <div class="ico">🩺</div>
+            <div class="txt">
+              <b>Clinical</b>
+              <small>Physicians, CMIO/CMO, clinical leadership</small>
+            </div>
+          </div>
+          <div class="aopt active" data-audience="operations">
+            <div class="ico">⚙️</div>
+            <div class="txt">
+              <b>Operations</b>
+              <small>COO, clinic ops, throughput + capacity</small>
+            </div>
+          </div>
+          <div class="aopt active" data-audience="financial">
+            <div class="ico">💰</div>
+            <div class="txt">
+              <b>Financial</b>
+              <small>CFO, finance committee, board ROI</small>
+            </div>
+          </div>
+          <div class="aopt active" data-audience="executive">
+            <div class="ico">📊</div>
+            <div class="txt">
+              <b>Executive Summary</b>
+              <small>CEO/Board: combined story + next actions</small>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn" id="generateBtn">Generate narratives with OpenAI</button>
+
+        <div class="mini">
+          Tip for your interview: enter a “largest customer” scenario (e.g., 800–2,500 clinicians) and use telemetry upload to show
+          how this becomes a scalable, evidence-first workflow for enterprise accounts.
+        </div>
+      </div>
+
+      <!-- Right: Output + status -->
+      <div class="card section">
+        <h3>Output</h3>
+        <div class="sub">
+          Side-by-side narratives plus clinician-friendly validation checklist and the 3 next best actions for Customer Success / Clinical teams.
+        </div>
+
+        <div class="kpis">
+          <div class="kpi">
+            <small>Model</small>
+            <b id="modelName">—</b>
+          </div>
+          <div class="kpi">
+            <small>Latency</small>
+            <b id="latency">—</b>
+          </div>
+          <div class="kpi">
+            <small>Illustrative ROI (x)</small>
+            <b id="roiX">—</b>
+          </div>
+          <div class="kpi">
+            <small>Annual value (illustrative)</small>
+            <b id="annualValue">—</b>
+          </div>
+        </div>
+
+        <div class="results" id="results">
+          <div class="hr"></div>
+          <div class="rgrid" id="rgrid"></div>
+
+          <div class="list" style="margin-top:12px;">
+            <h4>Assumptions & caveats</h4>
+            <ul id="caveats"></ul>
+          </div>
+
+          <div class="list" style="margin-top:12px;">
+            <h4>Clinical validation checklist</h4>
+            <ul id="validation"></ul>
+          </div>
+
+          <div class="list" style="margin-top:12px;">
+            <h4>Next best actions (3)</h4>
+            <ul id="actions"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mapper Modal -->
+  <div class="modalOverlay" id="modalOverlay">
+    <div class="card modal">
+      <div class="mhead">
+        <div>
+          <h3>Epic Column Mapper</h3>
+          <p>
+            Map uploaded telemetry columns (CSV/JSON keys) to required fields used by Suki Value Intelligence.
+            This simulates enterprise workflows where fields differ by Epic extract template.
+          </p>
+        </div>
+        <button class="xbtn" id="closeModalBtn" type="button">Close</button>
+      </div>
+
+      <div class="mapgrid" id="mapgrid"></div>
+
+      <div class="mfoot">
+        <button class="btn" id="saveMappingBtn" type="button">Save mapping</button>
+        <button class="xbtn" id="resetMappingBtn" type="button">Reset mapping</button>
+      </div>
+
+      <div class="mini" style="margin-top:10px;">
+        Note: This is a demo-safe mapper. Don’t upload PHI. Use redacted samples only.
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
