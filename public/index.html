@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Suki Value Intelligence</title>
+  <title>Prism</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -13,8 +13,11 @@
   <div class="container">
     <div class="topbar">
       <div class="brand">
-        <h1>Suki Value Intelligence</h1>
-        <div class="tag">Clinical → Operational → Financial narratives at enterprise scale (liquid glass UI, real OpenAI calls)</div>
+        <h1>Prism</h1>
+        <div class="tag">
+          Clinical → Operational → Financial narratives at enterprise scale
+          (liquid glass UI, real OpenAI calls)
+        </div>
       </div>
       <div class="pillrow">
         <div class="pill"><strong>Mode</strong> Demo-safe (no PHI)</div>
@@ -26,11 +29,16 @@
     <div class="card hero">
       <div class="inner">
         <div>
-          <h2>What this solves (Katie + Erin):</h2>
+          <h2>What this solves</h2>
           <p>
-            Take the same clinical impact metrics and instantly generate <b>four stakeholder narratives</b>
-            (Clinical, Ops, Financial, Executive) — plus a <b>clinical validation checklist</b> so Medical Directors can trust and defend the story.
-            Includes a <b>Telemetry Upload mock</b> + <b>Epic column mapper</b> to show how this scales for large health systems.
+            Take the same clinical impact metrics and instantly generate
+            <b>four stakeholder narratives</b>
+            (Clinical, Operations, Financial, Executive) — plus a
+            <b>clinical validation checklist</b> so clinical leaders can trust,
+            defend, and operationalize the story.
+            Includes a <b>Telemetry Upload mock</b> and
+            <b>EHR column mapper</b> to demonstrate how this scales for
+            large health systems.
           </p>
         </div>
         <div class="pillrow">
@@ -44,7 +52,10 @@
       <!-- Left: Inputs -->
       <div class="card section">
         <h3>Inputs</h3>
-        <div class="sub">Enter the customer impact metrics. Upload telemetry (optional) to simulate evidence-based narratives for enterprise accounts.</div>
+        <div class="sub">
+          Enter customer impact metrics. Upload telemetry (optional) to simulate
+          evidence-based narratives for enterprise accounts.
+        </div>
 
         <div class="form">
           <div class="field">
@@ -67,7 +78,7 @@
           </div>
 
           <div class="field">
-            <label>Physicians live on Suki *</label>
+            <label>Physicians live *</label>
             <input id="physicianCount" type="number" min="1" placeholder="e.g., 850" />
           </div>
 
@@ -87,7 +98,7 @@
           </div>
 
           <div class="field">
-            <label>NPS (physician) *</label>
+            <label>NPS (clinician) *</label>
             <input id="npsScore" type="number" min="-100" max="100" step="1" placeholder="e.g., 72" />
           </div>
 
@@ -103,7 +114,7 @@
 
           <div class="field" style="grid-column: 1 / -1;">
             <label>Clinical context (optional)</label>
-            <textarea id="clinicalContext" placeholder="e.g., Teaching hospital, resident involvement, high acuity mix, recent Epic upgrade…"></textarea>
+            <textarea id="clinicalContext" placeholder="e.g., Teaching hospital, resident involvement, high acuity mix, recent EHR upgrade…"></textarea>
           </div>
         </div>
 
@@ -120,7 +131,7 @@
             <input id="showAssumptions" type="checkbox" checked />
             <div class="tmeta">
               <span>Show Financial Assumptions</span>
-              <small>Includes illustrative $/hr, $/visit, and $/physician/mo inputs.</small>
+              <small>Includes illustrative $/hr, $/visit, and $/user/mo inputs.</small>
             </div>
           </div>
         </div>
@@ -128,31 +139,36 @@
         <div id="assumptionsBox" style="margin-top:10px;">
           <div class="kpis">
             <div class="kpi">
-              <small>Physician hourly rate (loaded)</small>
-              <b>$</b> <input id="assumpRate" type="number" min="80" max="600" step="10" value="200" style="width:110px; margin-left:8px;">
+              <small>Clinician hourly rate (loaded)</small>
+              <b>$</b>
+              <input id="assumpRate" type="number" min="80" max="600" step="10" value="200" style="width:110px; margin-left:8px;">
             </div>
             <div class="kpi">
               <small>Reimbursement per visit</small>
-              <b>$</b> <input id="assumpVisit" type="number" min="40" max="1000" step="10" value="150" style="width:110px; margin-left:8px;">
+              <b>$</b>
+              <input id="assumpVisit" type="number" min="40" max="1000" step="10" value="150" style="width:110px; margin-left:8px;">
             </div>
             <div class="kpi">
-              <small>Suki cost / physician / month</small>
-              <b>$</b> <input id="assumpCost" type="number" min="50" max="2000" step="25" value="300" style="width:110px; margin-left:8px;">
+              <small>Platform cost / user / month</small>
+              <b>$</b>
+              <input id="assumpCost" type="number" min="50" max="2000" step="25" value="300" style="width:110px; margin-left:8px;">
             </div>
             <div class="kpi">
               <small>Work days per year</small>
-              <b></b> <input id="assumpDays" type="number" min="180" max="365" step="5" value="250" style="width:110px;">
+              <input id="assumpDays" type="number" min="180" max="365" step="5" value="250" style="width:110px;">
             </div>
           </div>
-          <div class="mini">All financial outputs are labeled <b>illustrative unless validated by telemetry</b>.</div>
+          <div class="mini">
+            All financial outputs are labeled <b>illustrative unless validated by telemetry</b>.
+          </div>
         </div>
 
         <div class="hr"></div>
 
-        <h3>Telemetry Upload (Mock) + Epic Column Mapper</h3>
+        <h3>Telemetry Upload (Mock) + EHR Column Mapper</h3>
         <div class="sub">
-          Upload a CSV or JSON sample to simulate enterprise telemetry. No data is stored — it stays in your browser, and only a
-          <b>small, redacted summary</b> is sent to the server for narrative generation.
+          Upload a CSV or JSON sample to simulate enterprise telemetry.
+          No data is stored — only a <b>small, redacted summary</b> is sent for narrative generation.
         </div>
 
         <div class="row">
@@ -164,7 +180,7 @@
             </div>
           </div>
 
-          <button class="xbtn" id="openMapperBtn" type="button">Open Epic Column Mapper</button>
+          <button class="xbtn" id="openMapperBtn" type="button">Open Column Mapper</button>
         </div>
 
         <div class="row" style="margin-top:10px;">
@@ -178,7 +194,7 @@
 
         <div class="hr"></div>
 
-        <h3>Audiences (choose what to generate)</h3>
+        <h3>Audiences</h3>
         <div class="audiences">
           <div class="aopt active" data-audience="clinical">
             <div class="ico">🩺</div>
@@ -205,61 +221,44 @@
             <div class="ico">📊</div>
             <div class="txt">
               <b>Executive Summary</b>
-              <small>CEO/Board: combined story + next actions</small>
+              <small>CEO / Board combined view</small>
             </div>
           </div>
         </div>
 
-        <button class="btn" id="generateBtn">Generate narratives with OpenAI</button>
-
-        <div class="mini">
-          Tip for your interview: enter a “largest customer” scenario (e.g., 800–2,500 clinicians) and use telemetry upload to show
-          how this becomes a scalable, evidence-first workflow for enterprise accounts.
-        </div>
+        <button class="btn" id="generateBtn">Generate narratives with AI</button>
       </div>
 
-      <!-- Right: Output + status -->
+      <!-- Right: Output -->
       <div class="card section">
         <h3>Output</h3>
         <div class="sub">
-          Side-by-side narratives plus clinician-friendly validation checklist and the 3 next best actions for Customer Success / Clinical teams.
+          Side-by-side narratives plus clinician-friendly validation checklist and next best actions.
         </div>
 
         <div class="kpis">
-          <div class="kpi">
-            <small>Model</small>
-            <b id="modelName">—</b>
-          </div>
-          <div class="kpi">
-            <small>Latency</small>
-            <b id="latency">—</b>
-          </div>
-          <div class="kpi">
-            <small>Illustrative ROI (x)</small>
-            <b id="roiX">—</b>
-          </div>
-          <div class="kpi">
-            <small>Annual value (illustrative)</small>
-            <b id="annualValue">—</b>
-          </div>
+          <div class="kpi"><small>Model</small><b id="modelName">—</b></div>
+          <div class="kpi"><small>Latency</small><b id="latency">—</b></div>
+          <div class="kpi"><small>Illustrative ROI (x)</small><b id="roiX">—</b></div>
+          <div class="kpi"><small>Annual value</small><b id="annualValue">—</b></div>
         </div>
 
         <div class="results" id="results">
           <div class="hr"></div>
           <div class="rgrid" id="rgrid"></div>
 
-          <div class="list" style="margin-top:12px;">
+          <div class="list">
             <h4>Assumptions & caveats</h4>
             <ul id="caveats"></ul>
           </div>
 
-          <div class="list" style="margin-top:12px;">
+          <div class="list">
             <h4>Clinical validation checklist</h4>
             <ul id="validation"></ul>
           </div>
 
-          <div class="list" style="margin-top:12px;">
-            <h4>Next best actions (3)</h4>
+          <div class="list">
+            <h4>Next best actions</h4>
             <ul id="actions"></ul>
           </div>
         </div>
@@ -272,10 +271,10 @@
     <div class="card modal">
       <div class="mhead">
         <div>
-          <h3>Epic Column Mapper</h3>
+          <h3>Column Mapper</h3>
           <p>
-            Map uploaded telemetry columns (CSV/JSON keys) to required fields used by Suki Value Intelligence.
-            This simulates enterprise workflows where fields differ by Epic extract template.
+            Map uploaded telemetry fields to Prism’s required inputs.
+            This simulates enterprise workflows where extract schemas differ.
           </p>
         </div>
         <button class="xbtn" id="closeModalBtn" type="button">Close</button>
@@ -288,8 +287,8 @@
         <button class="xbtn" id="resetMappingBtn" type="button">Reset mapping</button>
       </div>
 
-      <div class="mini" style="margin-top:10px;">
-        Note: This is a demo-safe mapper. Don’t upload PHI. Use redacted samples only.
+      <div class="mini">
+        Demo-safe only. Do not upload PHI.
       </div>
     </div>
   </div>
